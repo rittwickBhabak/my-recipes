@@ -1,0 +1,38 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}{{recipe.title}}{% endblock page_title %}
+{% block page_styles %}
+<style>
+    .title-box{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    pre{
+        width: 100%;
+    }
+</style>
+{% endblock page_styles %}
+{% block page_content %}
+<div class="container">
+
+    <div class="title-box">
+        <div class="title fs-2">{{recipe.title}}</div>
+        <div class="update-link"><a href="{% url 'myapp:update-recipe' recipe.pk %}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+    </div>
+    <h1>Ingredients</h1>
+    <pre>
+        {{recipe.ingredients|safe}}
+    </pre>
+    <h1>Steps</h1>
+    <pre>
+        {{recipe.steps|safe}}
+    </pre>
+    <h1>Details</h1>
+    <pre>
+        {{recipe.description|safe}}
+    </pre>
+</div>
+
+{% endblock page_content %}
